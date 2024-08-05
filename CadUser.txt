@@ -60,7 +60,7 @@ namespace cadusuario
                     Console.WriteLine("-------------------------------------------");
                     Console.WriteLine("");
                     Console.WriteLine("-------------------------------------------");
-                    Console.WriteLine("Por favor digite, insira o nome de usuário:");
+                    Console.WriteLine("Por favor, insira o nome de usuário:");
                     Console.WriteLine("-------------------------------------------");
                     Console.WriteLine("");
                     usuariolog = Console.ReadLine();
