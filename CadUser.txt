@@ -1,0 +1,117 @@
+using System;
+using System.Globalization;
+using System.Security.Cryptography.X509Certificates;
+
+namespace cadusuario
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            {
+
+                string nomeusuario, senhausuario, senhausuario2, usuariolog, senhalog;
+                int falhaslogin, i;
+
+
+                falhaslogin = 2;
+
+                // Cadastro de Usuário
+                Console.WriteLine("-------------------------------------");
+                Console.WriteLine("---------CADASTRO DE USUÁRIO---------");
+                Console.WriteLine("-------------------------------------");
+                Console.WriteLine("Por favor, digite um nome de usuário:");
+                nomeusuario = Console.ReadLine();
+                Console.WriteLine("");
+                Console.WriteLine("Agora digite uma senha.");
+                senhausuario = Console.ReadLine();
+                Console.WriteLine("");
+                Console.WriteLine("Digite a senha novamente.");
+                senhausuario2 = Console.ReadLine();
+
+                while (senhausuario2 != senhausuario)
+                {
+                    Console.WriteLine("As senhas digitas não correspondem, favor, digite novamente.");
+                    senhausuario2 = Console.ReadLine();
+                }
+
+                Console.WriteLine("");
+                Console.WriteLine("-------------------------------");
+                Console.WriteLine("Usuário cadastrado com sucesso!");
+                Console.WriteLine("-------------------------------");
+                Console.WriteLine("");
+                Console.WriteLine("Aperte a tecla ENTER para ser redirecionado à tela de LOGIN.");
+                Console.ReadLine();
+                Console.Clear();
+
+                // Login + bloqueio por 3 tentativas falhas.
+
+                Console.WriteLine("-------------------------------------------");
+                Console.WriteLine("-------------------LOGIN-------------------");
+                Console.WriteLine("-------------------------------------------");
+                Console.WriteLine("Por favor digite, insira o nome de usuário:");
+                usuariolog = Console.ReadLine();
+                Console.WriteLine("");
+                while (usuariolog != nomeusuario)
+                {                    
+                    Console.WriteLine("-------------------------------------------");
+                    Console.WriteLine("   Usuário inexistente, tente novamente.");
+                    Console.WriteLine("-------------------------------------------");
+                    Console.WriteLine("");
+                    Console.WriteLine("-------------------------------------------");
+                    Console.WriteLine("Por favor digite, insira o nome de usuário:");
+                    Console.WriteLine("-------------------------------------------");
+                    Console.WriteLine("");
+                    usuariolog = Console.ReadLine();
+                    Console.WriteLine("");
+                }
+                Console.WriteLine("--------------------------");
+                Console.WriteLine("Por favor, digite a senha:");
+                senhalog = Console.ReadLine();
+
+
+
+                if (usuariolog != nomeusuario || senhalog != senhausuario)
+                {
+                    int cont;
+                    for (i = 0; i < falhaslogin; i++)
+                    {
+                        cont = falhaslogin - i;
+                        Console.WriteLine("Informações inválidas, favor tentar novamente, você tem mais " + cont + " tentativas.");
+                        Console.WriteLine("");
+                        usuariolog = Console.ReadLine();
+                        senhalog = Console.ReadLine();
+                        Console.WriteLine("");
+
+                        if (usuariolog == nomeusuario & senhalog == senhausuario)
+                        {
+                            i = 2;
+                        }
+                        else
+                        {
+                        }
+                    }
+
+                    if (i == 2 || usuariolog != nomeusuario || senhalog != senhausuario)
+                    {
+                        Console.WriteLine("-------------------------------------------------------------");
+                        Console.WriteLine("Acesso bloqueado, favor contatar o administrador do sistema.");
+                        Console.WriteLine("-------------------------------------------------------------");
+                    }
+                    else
+                    {
+                        Console.WriteLine("----------------------------");
+                        Console.WriteLine("Login realizado com sucesso!");
+                        Console.WriteLine("----------------------------");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("----------------------------");
+                    Console.WriteLine("Login realizado com sucesso!");
+                    Console.WriteLine("----------------------------");
+                }                
+            }
+        }
+    }
+}
